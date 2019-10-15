@@ -31,8 +31,18 @@ namespace mold
   struct value : boost::spirit::x3::variant<nil, string, object, array>
   {
     value() : base_type() {}
+#if false&&0
     template<typename T> value(T&& t) : base_type(std::move(t)) {}
+#endif
     template<typename T> value(const T& t) : base_type(t) {}
+
+    // Explicitly define non-move operator= to avoid "T&&" alternative.
+    template<typename T>
+    value& operator=(const T& t)
+    {
+      base_type::operator=(t);
+      return *this;
+    }
   };
 
 } // namespace mold

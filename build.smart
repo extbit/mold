@@ -1,12 +1,12 @@
 project (lib)
 
 import (
-    lib/boost/algorithm
-    lib/boost/format
-    lib/boost/spirit
-    lib/boost/smart_ptr
-    lib/boost/lexical_cast
-    lib/boost/test
+    boost/algorithm
+    boost/format
+    boost/spirit
+    boost/smart_ptr
+    boost/lexical_cast
+    boost/test
 )
 
 cxxflags_derived := $(unique $(cxxflags))
